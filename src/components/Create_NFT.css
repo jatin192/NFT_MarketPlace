@@ -1,0 +1,84 @@
+
+
+#class_1 input[type="file"] {
+    margin-top: 15px;
+    display: block;
+    
+}
+
+
+#class_1 h3 {
+    color: #f4eded;
+    text-align: center;
+    margin-bottom: 21px;
+   
+}
+
+
+#class_1 button {
+    color: rgb(240, 234, 234);
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 97%;
+    border: none;
+    border-radius: 7px;
+    padding: 11px;
+    transition: background-color 0.2s ease-in-out;
+
+    background-color: #6a0dad;
+}
+
+.class_185 {
+    text-align: center;
+    color: #eb4e3d;
+
+}
+
+#class_1 input[type="text"],
+#class_1 input[type="number"],
+#class_1 textarea {
+    margin-bottom: 26px;
+    width: calc(99% - 23px);
+    border-radius: 7px;
+    font-size: 16px;
+    color: #414141;
+    padding: 11px;
+    border: 1px solid #fefcfc;
+
+}
+
+
+#class_1 button:hover 
+{
+    background-color: #640aa4;
+}
+
+#class_1 button:disabled {
+    cursor: not-allowed;
+    background-color: #090909;
+    opacity: 0.3;
+
+}
+
+
+#class_1 {
+    background: #0d0d0d;
+    box-shadow: 0 4px 15px rgba(9, 9, 9, 0.2);
+    margin: 0 auto;
+    padding: 26px;
+    max-width: 639px;
+    border-radius: 11px;
+
+}
+
+
+#class_1 label {
+    margin-bottom: 7px;
+    color: #fffdfd;
+    display: block;
+    font-weight: 599;
+
+}
+
+

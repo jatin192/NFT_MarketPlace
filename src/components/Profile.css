@@ -1,0 +1,55 @@
+.class_181 
+{
+    margin: 39px;
+    flex: 1 1 31%;
+    max-width: 150px;
+}
+
+.class_180o h2 
+{
+    color: rgb(11, 11, 11);
+    font-weight: bold;
+    margin-bottom: 9px;
+    text-align: center;
+}
+
+.class_180o p {
+    margin: 0;
+}
+.class__1 
+{
+    color: rgb(247, 231, 231);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    padding: 49px;
+    
+}
+
+.nft-grid {
+    text-align: center;
+    gap: 79px;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+
+}
+
+.class_180o 
+{
+    margin-bottom: 1px;
+    text-align: center;
+    color: white;
+    
+}
+
+
+
+
+
+
+
+

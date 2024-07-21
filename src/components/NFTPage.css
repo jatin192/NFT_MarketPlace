@@ -1,0 +1,89 @@
+.class2235 {
+  margin-top: 16px;
+  font-size: 15px;
+  color: #ed3649;
+ 
+}
+
+
+.class2234:hover {
+  transform: scale(1.05);
+  background-color: #0954a4;
+  ;
+}
+
+.class2231 {
+  object-fit: cover;
+  margin-bottom: 19px;
+  height: auto;
+  width: 99%;
+  border-radius: 9px;
+
+}
+
+.title {
+  color: #2f2f2f;
+  font-size: 25px;
+  font-weight: 599;
+  margin-bottom: 11px;
+  
+}
+
+.class_1 {
+  font-size: xx-large;
+}
+
+.class223 {
+  font-weight: 699;
+  color: #22a541;
+  
+}
+
+.class_198 {
+  margin-bottom: 19px;
+  color: #4a4949;
+  font-size: 16px;
+  
+}
+.class2232,
+.class2233 {
+  color: #697179;
+}
+
+.class2234 {
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 16px;
+  color: #fef7f7;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  background-color: #0474ec;
+  border: none;
+  cursor: pointer;
+  padding: 11px 23px;
+}
+
+
+.disabled-class2234 {
+  cursor: not-allowed;
+  background-color: #6c757da7;
+  ;
+}
+
+.class_1234 {
+  box-shadow: 0 5px 11px rgba(2, 2, 2, 0.15);
+  max-width: 599px;
+  margin: 19px;
+  border: 1px solid #f1f5f9;
+  padding: 19px;
+  background-color: #f5eeee;
+  border-radius: 12px;
+}
+
+.disabled-class2234:hover {
+  background-color: #666f76;
+}
+.class_123 {
+  color: #333;
+  font-size: 17px;
+  margin-bottom: 11px;
+}
