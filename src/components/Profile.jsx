@@ -17,7 +17,6 @@ let Profile = ({contract, account}) =>
     {
         let sumPrice = 0;
         let transaction = await contract.Get_My_NFTs();
-
         let items = await Promise.all(transaction.map(async i => 
         {
             let tokenURI = await contract.tokenURI(i.tokenId);

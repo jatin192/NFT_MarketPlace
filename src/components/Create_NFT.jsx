@@ -17,7 +17,7 @@ let Sell_NFT = ({contract, account}) =>
 
 //________________________________Pinata______________________________________________________________________________________________________________________________________
    
-    let secret   = ``;  // Pinata Sceret Api Key
+    let secret   = ``;  // Pinata Sceret Key
     let key      = ``;  // Pinata api Key
 
 
