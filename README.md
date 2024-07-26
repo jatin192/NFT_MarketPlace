@@ -1,5 +1,5 @@
 # NFT MarketPlace
-# Blog Post :
+## Blog Post
 https://medium.com/@singhal.3/building-an-nft-marketplace-dapp-a-step-by-step-guide-060274bd4a47
 #
 Live Dapp at : https://nftmarket192.netlify.app/
