@@ -87,3 +87,10 @@
   font-size: 17px;
   margin-bottom: 11px;
 }
+
+.class_1288{
+  width: 200px; /* Increase or decrease this value as needed */
+  padding: 10px; /* Optional: adds space inside the input */
+  font-size: 16px; /* Optional: adjusts the text size */
+}
+.class_2230{background-color: #0474ec;}

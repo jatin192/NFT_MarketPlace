@@ -7,7 +7,7 @@ import NFTTile from "./NFTTile";
 import Navbar from "./Navbar";
 let MarketPlace = ({contract, account}) =>
 {
-    let d = [                                                                                                               // sample data
+    let sample_data = [                                                                                                               // sample data
         {
             "name": "NFT_1",
             "description": "Dog NFT",
@@ -28,7 +28,7 @@ let MarketPlace = ({contract, account}) =>
             return IPFSUrl;
         };
 
-    let [data, Update_Data_func] = useState(d);
+    let [data, Update_Data_func] = useState(sample_data);
     let [Data_Fetched_i, Update_Fetched_func] = useState(false);
 
 
@@ -57,7 +57,9 @@ let MarketPlace = ({contract, account}) =>
                 name: meta.name,
                 description: meta.description,
             }
+            console.log("item =",item);
             return item;
+            
         }))
     
         Update_Fetched_func(true);
@@ -77,7 +79,7 @@ return (
         <h1 className='class_1'>Top NFTs</h1>
         <div className="class_2">
             {data.map((value, index) => {
-                return <NFTTile data={value} key={index} className="class_3" />;
+                return <NFTTile data={value} key={index} />;
             })}
         </div>
     </>

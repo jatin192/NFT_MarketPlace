@@ -19,9 +19,9 @@ let Profile = ({contract, account}) =>
         let transaction = await contract.Get_My_NFTs();
         let items = await Promise.all(transaction.map(async i => 
         {
-            let tokenURI = await contract.tokenURI(i.tokenId);
-            let meta = await axios.get(tokenURI);
-            meta = meta.data;
+            let Token_URI = await contract.tokenURI(i.tokenId);
+            let j = await axios.get(Token_URI);
+            j = j.data;
 
             let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
             let item = {
@@ -29,9 +29,9 @@ let Profile = ({contract, account}) =>
                             tokenId: i.tokenId.toNumber(),
                             seller: i.seller,
                             owner: i.owner,
-                            image: meta.image,
-                            name: meta.name,
-                            description: meta.description,
+                            image: j.image,
+                            name: j.name,
+                            description: j.description,
                        };
 
             sumPrice += Number(price);
@@ -66,10 +66,10 @@ let Profile = ({contract, account}) =>
                 <div className="nft-grid">
                         {data.map((value, index) => (
                             <div className="class_181" key={index}>
-                                <NFTTile data={value} />
+                                <NFTTile data={value}  key={index} />
                             </div>
                         ))}
-                </div> {data.length === 0 && (<div className="class_180o"><p>Oops, No NFT data to display (Are you logged in?)</p> </div>)} </div>
+                </div> {data.length === 0 && (<div className="class_180o"><p>Oops, No NFT data to display (Are you logged in??)</p> </div>)} </div>
             </div>
         </>
     );

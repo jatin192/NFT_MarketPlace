@@ -18,7 +18,7 @@ let NFTPage = ({ contract, account }) =>
       };
 
 
-      let [data, updateData]                     = useState({});
+      let [data, updateData]                      = useState({});
       let [Data_Fetched_i, Update_Data_Fetched_func]    = useState(false);
       let [message, Update_Message_func]               = useState("");
       let [currAddress, updateCurrAddress]       = useState("0x");
@@ -54,6 +54,10 @@ let NFTPage = ({ contract, account }) =>
           updateCurrAddress(account);
       }
 
+
+
+
+
       let List_NFT = async(tokenId, price_) =>
       {
           try 
@@ -63,7 +67,7 @@ let NFTPage = ({ contract, account }) =>
 
               let price = ethers.utils.parseUnits(price_, 'ether')
 
-              Update_Message_func("Listing the NFT... Please Wait (Upto 2 mins)");
+              Update_Message_func("Listing the NFT... Please Wait (Upto 30 sec)");
               let transaction = await contract.List_NFT(tokenId, price_, { value: listingPrice });
 
               await transaction.wait();
@@ -77,11 +81,35 @@ let NFTPage = ({ contract, account }) =>
           }
       }
 
+
+
+
+      let Delist_NFT = async(tokenId)=>
+      {
+        try
+        {
+            Update_Message_func("Deliting the NFT... Please Wait (Upto 30 sec)");
+
+            let  tx = await contract.Remove_NFT_From_Listed(tokenId);
+            await tx.wait();
+
+            alert('You successfully Delisted the NFT!');
+            Update_Message_func("");
+        }
+          
+          catch (e) 
+          {
+              alert("Delist Error" + e);
+          }
+      }
+
+
+
       let Buy_NFT = async(tokenId) =>
       {
           try 
           {
-              Update_Message_func("Buying the NFT... Please Wait (Upto 2 mins)");
+              Update_Message_func("Buying the NFT... Please Wait (Upto 30 sec)");
               let priceInWei = ethers.utils.parseUnits(data.price.toString(), 'ether');
 
               let transaction = await contract.Buy_NFT(tokenId, {
@@ -122,19 +150,24 @@ let NFTPage = ({ contract, account }) =>
               Name: {data.name}
             </div>
             <div className="class_198"> Description: {data.description}</div>
-            <div className="class_123">Price: <span className="class223">{data.price + " ETH"}</span></div>
+
+            {listedToken.Is_Listed === true ? <div className="class_123">Price: <span className="class223">{data.price + " ETH"}</span></div>: <div></div>}
+            
+
+
             <div className="class_123"> Owner: <span className="class2232">{data.owner}</span></div>
             <div className="class_123">Seller: <span className="class2233">{data.seller}</span></div>
             <div>
-              {    currAddress !== data.seller    ?    <button className="button" onClick={() => Buy_NFT(tokenId)}>Buy this NFT</button>      :     <div></div>  }
+              {    currAddress !== data.seller    ?    <button className="class_2230" onClick={() => Buy_NFT(tokenId)}>Buy this NFT</button>      :     <div></div>  }
 
               {    currAddress === data.seller && listedToken.Is_Listed === false ?
                 <div>
-                    <input type="number" placeholder="Enter Price" value={price_i} onChange={(e) => setPrice(e.target.value)} />
+                    <input className="class_1288" type="number" placeholder="Enter Price" value={price_i} onChange={(e) => setPrice(e.target.value)} />
                     <button className="class2234" onClick={() => List_NFT(tokenId, price_i)}>List this NFT</button>
                 </div>
                 : <div></div>
               }
+              {  currAddress === data.seller && listedToken.Is_Listed === true   ?    <button className="class_2230" onClick={() => Delist_NFT(tokenId)}> Delist this NFT</button>      :     <div></div>  }
 
             </div>
             <div className="class2235">{message}</div>

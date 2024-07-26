@@ -29,26 +29,17 @@ let Upload_JSON_to_IPFS = async(JSONBody) =>
         let url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;    // axios POST  -----> request to  ----> Pinata
         return axios 
             .post(url, JSONBody, {
-                headers: {
-                    pinata_api_key: key,
-                    pinata_secret_api_key: secret,
-                }
+                headers: {pinata_api_key: key,pinata_secret_api_key: secret,}
             })
             .then(function (response) {
-               return {
-                   success: true,
-                   pinataURL: "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash
-               };
+               return {success: true,pinataURL: "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash };
             })
-            .catch(function (error) {
-                console.log(error)
-                return {
-                    success: false,
-                    message: error.message,
-                }
+            .catch(function (error) {console.log(error);return {success: false,message: error.message,}
     
         });
 };
+
+
 
 
 let Upload_File_to_IPFS = async(file) => 
@@ -56,92 +47,48 @@ let Upload_File_to_IPFS = async(file) =>
     let url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;      // axios POST  -----> request to  ----> Pinata
     let data = new FormData();
     data.append('file', file);
-
-    let metadata = JSON.stringify(
-    {
-        name: 'testname',
-        keyvalues: 
-        {
-            exampleKey: 'exampleValue'
-        }
-    });
+    let metadata = JSON.stringify({name: 'testname',keyvalues: {exampleKey: 'exampleValue'}});
     data.append('pinataMetadata', metadata);
-
-    
-    let pinataOptions = JSON.stringify(        // optional
-    {
-        cidVersion: 0,
-        customPinPolicy: 
-        {
-            regions: [
-                {
-                    id: 'FRA1',
-                    desiredReplicationCount: 1
-                },
-                {
-                    id: 'NYC1',
-                    desiredReplicationCount: 2
-                }
-            ]
-        }
-    });
-
+     // optional
+    let pinataOptions = JSON.stringify({cidVersion: 0,customPinPolicy: {regions: [{ id: 'FRA1', desiredReplicationCount: 1 },{ id: 'NYC1', desiredReplicationCount: 2 }]}});
     data.append('pinataOptions', pinataOptions);
 
     return axios 
         .post(url, data, {
             maxBodyLength: 'Infinity',
-            headers: {
-                'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-                pinata_api_key: key,
-                pinata_secret_api_key: secret,
-            }
+            headers: {'Content-Type': `multipart/form-data; boundary=${data._boundary}`,pinata_api_key: key,pinata_secret_api_key: secret,}
         })
         .then(function (response) 
         {
             console.log("Image is uploaded", response.data.IpfsHash)
-            return{
-               success: true,
-               pinataURL: "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash
-           };
+            return{success: true,pinataURL: "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash};
         })
         .catch(function (error) 
         {
             console.log(error)
-            return{
-                success: false,
-                message: error.message,
-            }
-
-    });
+            return{success: false,message: error.message,}
+        });
 };
+
+
+
 
 
 let Upload_Metadata_to_IPFS = async() =>
 {
     let {name, description} = formParams;
-
-    if( !name || !description || !fileURL)
-    {
-        updateMessage("Please fill all the fields!")
-        return -1;
-    }
-
-    let NFT_JSON = {
-        name, description, image: fileURL
-    }
-
+    if( !name || !description || !fileURL) {updateMessage("Please fill all the fields!");return -1;}
+    let NFT_JSON = {name, description, image: fileURL }
     try
     {
         let response = await Upload_JSON_to_IPFS(NFT_JSON);          // upload the metadata JSON to IPFS
-        if(response.success === true){
-            console.log("Uploaded JSON to Pinata: ", response)
-            return response.pinataURL;
-        }
+        if(response.success === true) 
+            {
+                console.log("Uploaded JSON to Pinata: ", response);
+                return response.pinataURL;
+            }
     }
-    catch(e) {
-        console.log("error uploading JSON metadata:", e)
-    }
+    catch(e) {console.log("error uploading JSON metadata:", e)}
 }
 
 
@@ -161,6 +108,7 @@ async function listNFT(e) {
             Disable_Button();
             updateMessage("Uploading NFT(takes 2 mins).. please dont click anything!")
 
+            console.log("metadataURL ======",metadataURL)
             let transaction = await contract.Mint_NFT(metadataURL)
             await transaction.wait()
 

@@ -45,7 +45,7 @@ function AppContent() {
         let address_ = await signer_.getAddress();
         set_account_func(address_);
 
-        let contract_instance = new ethers.Contract("0xf0dFC97fAFcc72D65F3323647718F7AA5AAA91ff", ABI, signer_);
+        let contract_instance = new ethers.Contract("0x491C6b068D504e9d2BE46f81748Ee9C6a1B931f1", ABI, signer_); //0xf0dFC97fAFcc72D65F3323647718F7AA5AAA91ff
         set_contract_func(contract_instance);
       } else {
         setShowMetamaskModal(true);
